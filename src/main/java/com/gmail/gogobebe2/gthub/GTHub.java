@@ -36,7 +36,8 @@ public class GTHub extends JavaPlugin implements Listener {
                 sender.sendMessage(ChatColor.RED + "Error! You have to be a player to use this command!");
                 return true;
             }
-            Location location = ((Player) sender).getLocation();
+            Player player = (Player) sender;
+            Location location = player.getLocation();
 
             String worldName = location.getWorld().getName();
             double x = location.getX();
@@ -52,6 +53,7 @@ public class GTHub extends JavaPlugin implements Listener {
             getConfig().set("spawn.yaw", yaw);
             getConfig().set("spawn.pitch", pitch);
             saveConfig();
+            player.sendMessage(ChatColor.GREEN + "Spawn set!");
             return true;
         }
         return false;
@@ -59,6 +61,11 @@ public class GTHub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        if (!getConfig().isSet("spawn.world")) {
+            player.sendMessage(ChatColor.RED + "Error! No spawn set!");
+            return;
+        }
         World world = Bukkit.getWorld(getConfig().getString("spawn.world"));
         double x = getConfig().getDouble("spawn.x");
         double y = getConfig().getDouble("spawn.y");
@@ -66,7 +73,6 @@ public class GTHub extends JavaPlugin implements Listener {
         float yaw = (float) getConfig().getDouble("spawn.yaw");
         float pitch = (float) getConfig().getDouble("spawn.pitch");
         Location spawn = new Location(world, x, y, z, yaw, pitch);
-        Player player = event.getPlayer();
         player.getInventory().clear();
         player.teleport(spawn);
         event.setJoinMessage("");
