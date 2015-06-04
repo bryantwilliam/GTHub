@@ -1,5 +1,5 @@
 name: GTHub
-version: 1.0.0-DEVELOPMENT-SNAPSHOT
+version: 1.0.1-DEVELOPMENT-SNAPSHOT
 main: com.gmail.gogobebe2.gthub.GTHub
 description: Basic hub plugin.
 author: William Bryant (gogobebe2)

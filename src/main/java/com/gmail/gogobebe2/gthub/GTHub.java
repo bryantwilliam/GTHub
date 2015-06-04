@@ -1,4 +1,4 @@
-package com.gmail.gogobebe2.gthub.GTHub;
+package com.gmail.gogobebe2.gthub;
 
 import org.bukkit.*;
 import org.bukkit.command.Command;
