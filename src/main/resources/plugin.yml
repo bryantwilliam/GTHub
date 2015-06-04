@@ -1,0 +1,11 @@
+name: GTHub
+version: 1.0.0-DEVELOPMENT-SNAPSHOT
+main: com.gmail.gogobebe2.gthub.GTHub
+description: Basic hub plugin.
+author: William Bryant (gogobebe2)
+website: gogobebe2@gmail.com
+commands:
+  permspawn:
+permissions:
+  gthub.setspawn:
+    default: op
