@@ -75,11 +75,13 @@ public class GTHub extends JavaPlugin implements Listener {
         Location spawn = new Location(world, x, y, z, yaw, pitch);
         player.getInventory().clear();
         player.teleport(spawn);
+        player.setHealth(20);
         event.setJoinMessage("");
     }
 
     @EventHandler
     public void onHungerDrop(FoodLevelChangeEvent event) {
+        event.setFoodLevel(20);
         event.setCancelled(true);
     }
 
@@ -107,8 +109,10 @@ public class GTHub extends JavaPlugin implements Listener {
         event.setCancelled(true);
         player.setAllowFlight(false);
         player.setFlying(false);
-        player.setVelocity(player.getLocation().getDirection().multiply(1.5).setY(1));
-        player.playEffect(player.getLocation(), Effect.HAPPY_VILLAGER, 1);
+        Location location = player.getLocation();
+        player.setVelocity(location.getDirection().multiply(1.5).setY(1));
+
+        player.playSound(location, Sound.CHICKEN_EGG_POP, 1.0F, 1.0F);
     }
 
     @EventHandler
@@ -118,6 +122,7 @@ public class GTHub extends JavaPlugin implements Listener {
                 && (player.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR)
                 && (!player.isFlying())) {
             player.setAllowFlight(true);
+            player.playEffect(player.getLocation(), Effect.HAPPY_VILLAGER, 1);
         }
     }
 }
