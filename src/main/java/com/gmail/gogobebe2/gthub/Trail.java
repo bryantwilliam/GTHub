@@ -18,7 +18,7 @@ public class Trail extends BukkitRunnable {
     @Override
     public void run() {
         if (player.isFlying() || player.getLocation().subtract(0, 1, 0).getBlock().getType() == Material.AIR) {
-            player.playEffect(player.getLocation(), Effect.HAPPY_VILLAGER, 1);
+            player.getWorld().playEffect(player.getLocation(), Effect.HAPPY_VILLAGER, 1);
         }
         else {
             this.cancel();
