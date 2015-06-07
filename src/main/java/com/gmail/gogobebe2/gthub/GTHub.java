@@ -76,13 +76,16 @@ public class GTHub extends JavaPlugin implements Listener {
         player.getInventory().clear();
         player.teleport(spawn);
         player.setHealth(20);
+        player.setFoodLevel(20);
         event.setJoinMessage("");
     }
 
     @EventHandler
     public void onHungerDrop(FoodLevelChangeEvent event) {
-        event.setFoodLevel(40);
-        event.setCancelled(true);
+        event.setFoodLevel(20);
+        if (event.getFoodLevel() == 20) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler
