@@ -61,6 +61,7 @@ public class GTHub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        event.setJoinMessage(null);
         Player player = event.getPlayer();
         if (!getConfig().isSet("spawn.world")) {
             player.sendMessage(ChatColor.RED + "Error! No spawn set!");
@@ -77,7 +78,6 @@ public class GTHub extends JavaPlugin implements Listener {
         player.teleport(spawn);
         player.setHealth(20);
         player.setFoodLevel(20);
-        event.setJoinMessage("");
     }
 
     @EventHandler
