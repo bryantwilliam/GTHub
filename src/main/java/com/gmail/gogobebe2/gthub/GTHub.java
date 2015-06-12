@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -59,7 +60,7 @@ public class GTHub extends JavaPlugin implements Listener {
         return false;
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.setJoinMessage(null);
         Player player = event.getPlayer();
@@ -80,7 +81,7 @@ public class GTHub extends JavaPlugin implements Listener {
         player.setFoodLevel(20);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onHungerDrop(FoodLevelChangeEvent event) {
         event.setFoodLevel(20);
         if (event.getFoodLevel() == 20) {
@@ -88,22 +89,22 @@ public class GTHub extends JavaPlugin implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onHealthDrop(EntityDamageEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onItemDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onItemPickup(PlayerPickupItemEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         if (player.getGameMode() == GameMode.CREATIVE) {
@@ -118,7 +119,7 @@ public class GTHub extends JavaPlugin implements Listener {
         player.playSound(location, Sound.CHICKEN_EGG_POP, 1.0F, 1.0F);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if ((player.getGameMode() != GameMode.CREATIVE)
