@@ -62,7 +62,6 @@ public class GTHub extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.setJoinMessage("");
         event.setJoinMessage(null);
         Player player = event.getPlayer();
         if (!getConfig().isSet("spawn.world")) {
@@ -80,6 +79,11 @@ public class GTHub extends JavaPlugin implements Listener {
         player.teleport(spawn);
         player.setHealth(20);
         player.setFoodLevel(20);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        event.setQuitMessage(null);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
