@@ -60,7 +60,7 @@ public class GTHub extends JavaPlugin implements Listener {
         return false;
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.setJoinMessage(null);
         Player player = event.getPlayer();
@@ -81,12 +81,12 @@ public class GTHub extends JavaPlugin implements Listener {
         player.setFoodLevel(20);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerLeave(PlayerQuitEvent event) {
         event.setQuitMessage(null);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onHungerDrop(FoodLevelChangeEvent event) {
         event.setFoodLevel(20);
         if (event.getFoodLevel() == 20) {
@@ -94,22 +94,22 @@ public class GTHub extends JavaPlugin implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onHealthDrop(EntityDamageEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onItemDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onItemPickup(PlayerPickupItemEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         if (player.getGameMode() == GameMode.CREATIVE) {
@@ -124,7 +124,7 @@ public class GTHub extends JavaPlugin implements Listener {
         player.playSound(location, Sound.CHICKEN_EGG_POP, 1.0F, 1.0F);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if ((player.getGameMode() != GameMode.CREATIVE)
