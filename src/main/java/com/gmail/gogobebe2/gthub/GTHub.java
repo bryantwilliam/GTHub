@@ -60,8 +60,9 @@ public class GTHub extends JavaPlugin implements Listener {
         return false;
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
+        event.setJoinMessage("");
         event.setJoinMessage(null);
         Player player = event.getPlayer();
         if (!getConfig().isSet("spawn.world")) {
