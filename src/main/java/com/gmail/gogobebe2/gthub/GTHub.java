@@ -83,6 +83,10 @@ public class GTHub extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        player.setVelocity(player.getLocation().getDirection().multiply(0));
+        player.setAllowFlight(false);
+        player.setFlying(false);
         event.setQuitMessage(null);
     }
 
